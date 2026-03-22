@@ -6,11 +6,11 @@ namespace Pedidos.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProdutoController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
         private readonly IProdutoAppService _service;
 
-        public ProdutoController(IProdutoAppService service)
+        public ProdutosController(IProdutoAppService service)
         {
             _service = service;
         }
