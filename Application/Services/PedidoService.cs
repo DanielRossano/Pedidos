@@ -12,7 +12,7 @@ namespace Pedidos.Application.Services
         Task AdicionarProdutoAsync(int pedidoId, AdicionarProdutoRequest request);
         Task RemoverProdutoAsync(int pedidoId, RemoverProdutoRequest request);
         Task FecharPedidoAsync(int pedidoId);
-        Task<List<PedidoDto>> ListarPedidosAsync();
+        Task<List<PedidoDto>> ListarPedidosAsync(ListarPedidosRequest request);
         Task<PedidoDto?> ListarPedidoAsync(int pedidoId);
     }
 
@@ -67,9 +67,9 @@ namespace Pedidos.Application.Services
             await _pedidoRepository.AtualizarAsync(pedido);
         }
 
-        public async Task<List<PedidoDto>> ListarPedidosAsync()
+        public async Task<List<PedidoDto>> ListarPedidosAsync(ListarPedidosRequest request)
         {
-            var pedidos = await _pedidoRepository.ListarAsync();
+            var pedidos = await _pedidoRepository.ListarAsync(request.Status, request.Pagina, request.TamanhoPagina);
             return pedidos.Select(MapToDto).ToList();
         }
 

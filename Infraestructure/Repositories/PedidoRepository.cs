@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pedidos.Domain.Entities;
+using Pedidos.Domain.Enums;
 using Pedidos.Infrastructure.Data;
 
 namespace Pedidos.Infrastructure.Repositories
@@ -7,7 +8,7 @@ namespace Pedidos.Infrastructure.Repositories
     public interface IPedidoRepository
     {
         Task<Pedido?> ListarPorIdAsync(int id);
-        Task<List<Pedido>> ListarAsync();
+        Task<List<Pedido>> ListarAsync(StatusPedido? status, int pagina, int tamanhoPagina);
         Task AdicionarAsync(Pedido pedido);
         Task AtualizarAsync(Pedido pedido);
         Task SaveChangesAsync();
@@ -30,10 +31,22 @@ namespace Pedidos.Infrastructure.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<List<Pedido>> ListarAsync()
+        public async Task<List<Pedido>> ListarAsync(StatusPedido? status, int pagina, int tamanhoPagina)
         {
-            return await _context.Pedidos
+            var query = _context.Pedidos
                 .Include(p => p.Produtos)
+                .ThenInclude(i => i.Produto)
+                .AsQueryable();
+
+            if (status.HasValue)
+            {
+                query = query.Where(p => p.Status == status.Value);
+            }
+
+            return await query
+                .OrderByDescending(p => p.Id)
+                .Skip((pagina - 1) * tamanhoPagina)
+                .Take(tamanhoPagina)
                 .ToListAsync();
         }
 

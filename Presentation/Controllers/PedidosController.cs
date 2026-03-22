@@ -16,9 +16,9 @@ namespace Pedidos.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Listar()
+        public async Task<ActionResult> Listar([FromQuery] ListarPedidosRequest request)
         {
-            var result = await _service.ListarPedidosAsync();
+            var result = await _service.ListarPedidosAsync(request);
             return Ok(result);
         }
 
