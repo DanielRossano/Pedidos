@@ -5,6 +5,8 @@ using Pedidos.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.Database.json", optional: false, reloadOnChange: true);
+
 var connectionString = builder.Configuration.GetConnectionString("PedidosConnection");
 if (string.IsNullOrWhiteSpace(connectionString))
 {

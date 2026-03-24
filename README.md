@@ -65,23 +65,28 @@ GO
 ```
 
 ## 2) Configurar a conexão
-No arquivo `appsettings.json`, ajuste a chave `ConnectionStrings:PedidosConnection`:
+A conexão é configurável no arquivo `appsettings.Database.json`.
+
+Exemplo com IP local (instância `sql2019`):
 
 ```json
 {
   "ConnectionStrings": {
-    "PedidosConnection": "Server=(localdb)\\MSSQLLocalDB;Database=Pedidos;Trusted_Connection=True;TrustServerCertificate=True;"
+    "PedidosConnection": "Server=192.168.0.19\\sql2019;Database=Pedidos;User Id=sa;Password=123;TrustServerCertificate=True;Integrated Security=False;Persist Security Info=True;MultipleActiveResultSets=True;Encrypt=False;"
   }
 }
 ```
 
-Exemplo para SQL local:
 
-```json
-"PedidosConnection": "Server=localhost,1433;Database=Pedidos;User Id=sa;Password=SuaSenhaAqui;TrustServerCertificate=True;"
+## 3) Rodar a aplicação
+Na raiz do projeto:
+
+```bash
+dotnet restore
+dotnet run
 ```
 
-## 3) Testar a API
+## 4) Testar a API
 - Swagger UI: `https://localhost:<porta>/swagger`
 
 ## Endpoints principais

@@ -66,6 +66,9 @@ artifacts/
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
+# Configurações locais de ambiente
+appsettings.Development.json
+
 # StyleCop
 StyleCopReport.xml
 
