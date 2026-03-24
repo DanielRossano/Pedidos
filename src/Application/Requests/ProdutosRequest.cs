@@ -1,7 +1,6 @@
-﻿using Pedidos.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Pedidos.Application.Requests.ProdutosRequest
+namespace Pedidos.Application.Requests
 {
     public class CriarProdutoRequest
     {

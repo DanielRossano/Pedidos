@@ -1,8 +1,8 @@
-﻿using Pedidos.Application.Dtos.PedidoDto;
-using Pedidos.Application.Dtos.ProdutoDto;
-using Pedidos.Application.Requests.ProdutosRequest;
+﻿using Pedidos.Application.DTOs;
+using Pedidos.Application.Requests;
 using Pedidos.Domain.Entities;
 using Pedidos.Infrastructure.Repositories;
+
 namespace Pedidos.Application.Services
 {
     public interface IProdutoAppService

@@ -1,5 +1,4 @@
-﻿using Pedidos.Application.Dtos.PedidoDto;
-using Pedidos.Application.Dtos.ProdutoPedido;
+﻿using Pedidos.Application.DTOs;
 using Pedidos.Application.Requests;
 using Pedidos.Domain.Entities;
 using Pedidos.Infrastructure.Repositories;

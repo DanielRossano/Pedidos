@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pedidos.Application.Requests.ProdutosRequest;
+using Pedidos.Application.Requests;
 using Pedidos.Application.Services;
 
 namespace Pedidos.API.Controllers

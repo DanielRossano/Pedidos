@@ -72,7 +72,7 @@ Exemplo com IP local (instância `sql2019`):
 ```json
 {
   "ConnectionStrings": {
-    "PedidosConnection": "Server=192.168.0.19\\sql2019;Database=Pedidos;User Id=sa;Password=123;TrustServerCertificate=True;Integrated Security=False;Persist Security Info=True;MultipleActiveResultSets=True;Encrypt=False;"
+    "PedidosConnection": "Server=127.0.0.1\\sql2019;Database=Pedidos;User Id=sa;Password=123;TrustServerCertificate=True;Integrated Security=False;Persist Security Info=True;MultipleActiveResultSets=True;Encrypt=False;"
   }
 }
 ```

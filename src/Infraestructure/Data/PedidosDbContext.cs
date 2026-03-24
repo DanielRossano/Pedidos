@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Pedidos.Domain.Entities;
-using Pedidos.Domain.Enums;
 
 namespace Pedidos.Infrastructure.Data
 {

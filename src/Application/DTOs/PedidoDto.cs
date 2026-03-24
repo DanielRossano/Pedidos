@@ -1,7 +1,4 @@
-﻿using Pedidos.Application.Dtos.ProdutoPedido;
-
-
-namespace Pedidos.Application.Dtos.PedidoDto
+﻿namespace Pedidos.Application.DTOs
 {
 
     public class PedidoDto

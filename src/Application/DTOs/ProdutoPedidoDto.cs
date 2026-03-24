@@ -1,5 +1,4 @@
-﻿
-namespace Pedidos.Application.Dtos.ProdutoPedido
+﻿namespace Pedidos.Application.DTOs
 {
     public class ProdutosPedidoDto
     {
