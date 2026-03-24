@@ -7,7 +7,7 @@ namespace Pedidos.Application.Services
 {
     public interface IProdutoAppService
     {
-        Task<List<ProdutoDto>> ListarProdutosAsync();
+        Task<List<ProdutoDto>> ListarProdutosAsync(ListarProdutosRequest request);
         Task<ProdutoDto?> ListarProdutoAsync(int Id);
         Task<CriarProdutoDto> CriarProdutoAsync(CriarProdutoRequest request);
         Task<ProdutoDto> AtualizarProdutoAsync(int Id, AtualizarProdutoRequest request);
@@ -23,9 +23,9 @@ namespace Pedidos.Application.Services
             _produtoRepository = produtoRepository;
         }
 
-        public async Task<List<ProdutoDto>> ListarProdutosAsync()
+        public async Task<List<ProdutoDto>> ListarProdutosAsync(ListarProdutosRequest request)
         {
-            var produtos = await _produtoRepository.ListarAsync();
+            var produtos = await _produtoRepository.ListarAsync(request.Pagina, request.TamanhoPagina);
             return produtos.Select(MapToDto).ToList();
         }
         public async Task<ProdutoDto?> ListarProdutoAsync(int Id)

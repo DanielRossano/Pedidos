@@ -7,7 +7,7 @@ namespace Pedidos.Infrastructure.Repositories
     public interface IProdutoRepository
     {
         Task<Produto?> ListarPorIdAsync(int id);
-        Task<List<Produto>> ListarAsync();
+        Task<List<Produto>> ListarAsync(int pagina, int tamanhoPagina);
         Task CriarAsync(Produto produto);
         Task AtualizarAsync(Produto produto);
         Task ExcluirAsync(int id);
@@ -28,9 +28,15 @@ namespace Pedidos.Infrastructure.Repositories
             return await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id);
         }   
 
-        public async Task<List<Produto>> ListarAsync()
+        public async Task<List<Produto>> ListarAsync(int pagina, int tamanhoPagina)
         {
-            return await _context.Produtos.ToListAsync();
+            var query = _context.Produtos.AsQueryable();
+
+            return await query
+                .OrderByDescending(p => p.Id)
+                .Skip((pagina -1) * tamanhoPagina)
+                .Take(tamanhoPagina)
+                .ToListAsync();
         }
 
         public async Task CriarAsync(Produto produto)
